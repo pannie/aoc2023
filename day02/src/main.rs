@@ -6,7 +6,10 @@ fn main() {
     let result: Vec<_> = input
         .iter()
         .map(|line| line.split_once(": ").unwrap())
-        .map(|(game_part , color_part)| (&game_part[5..], color_part))
+        .map(|(game_part , color_part)| (&game_part[5..], color_part)) // get game id
+        .map(|(game_part, color_part)| (game_part, {
+            color_part.split("; ").collect::<Vec<_>>()
+        }))
 
 
         .collect();
